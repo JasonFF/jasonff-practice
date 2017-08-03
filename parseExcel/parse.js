@@ -41,6 +41,49 @@ const lakalaProvincePart1 = lakalaProvince[0].data.map((it,i)=>{
 })
 lakalaProvincePart1.splice(0,1)
 
+const lakalaProvincePart2 = [];
+const lakalaProvincePart2SortIndex = {};
+console.log(lakalaProvincePart1)
+lakalaProvincePart1.forEach((it,i)=>{
+  if (lakalaProvincePart2SortIndex[it.parentId] == undefined) {
+    lakalaProvincePart2.push({
+      id: it.id,
+      name: it.name,
+      parentId: it.parentId,
+      children: []
+    })
+    lakalaProvincePart2SortIndex[it.id] = lakalaProvincePart2.length-1;
+  } else {
+    lakalaProvincePart2[lakalaProvincePart2SortIndex[it.parentId]].children.push({
+      id: it.id,
+      name: it.name.replace(/\s/ig,""),
+      parentId: it.parentId
+    })
+  }
+})
+console.log(lakalaProvincePart2)
+const lakalaProvincePart3 = lakalaProvincePart2[0];
+function parseItemFromList(list,param,value) {
+  let result;
+  list.forEach(it=>{
+    if (it[param] == value) {
+      result = it
+    }
+  })
+  return result
+}
+lakalaProvincePart2.forEach((it,i)=>{
+  const chooseItem = parseItemFromList(lakalaProvincePart3.children, 'id', it.parentId);
+  if (chooseItem) {
+    if (!chooseItem.children) {
+      chooseItem.children = []
+    }
+    chooseItem.children.push(it)
+    lakalaProvincePart2SortIndex[it.id] = undefined
+  }
+})
+
 
 fs.writeFile('./lib/lakalaIndustry.json',JSON.stringify(lakalaIndustryPart2));
-fs.writeFile('./lib/lakalaProvince.json',JSON.stringify(lakalaProvincePart1));
+fs.writeFile('./lib/lakalaProvince.json',JSON.stringify(lakalaProvincePart3.children));
+fs.writeFile('./lib/test.json',JSON.stringify(lakalaProvincePart2SortIndex));
