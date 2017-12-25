@@ -4,7 +4,8 @@
   "description": "",
   "main": "parse.js",
   "scripts": {
-    "start": "babel-node --presets latest parse.js"
+    "start": "babel-node --presets latest parse.js",
+    "parseComponents": "babel-node --presets latest parseComponents.js"
   },
   "author": "",
   "license": "ISC",

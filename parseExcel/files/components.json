@@ -1,0 +1,581 @@
+{
+  "data": {
+    "common_info": [
+      {
+        "group_class": "基本信息",
+        "field": "name",
+        "control": "TextInput",
+        "label": "商户名称",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "alias_name",
+        "control": "TextInput",
+        "label": "商户简称",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "another_name",
+        "control": "TextInput",
+        "label": "商户别名",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "login_id",
+        "control": "TextInput",
+        "label": "商户账号",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "password",
+        "control": "TextInput",
+        "label": "登录密码",
+        "data": {
+          "required": true,
+          "visible": "CREATE"
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "mobile",
+        "control": "TextInput",
+        "label": "绑定手机号",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "location",
+        "control": "Location",
+        "label": "地区",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "address",
+        "control": "TextInput",
+        "label": "商户地址",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "基本信息",
+        "field": "is_use_pcredit",
+        "control": "Switch",
+        "label": "是否使用花呗"
+      },
+      {
+        "group_class": "基本信息",
+        "field": "is_use_pcredit_pay_installment",
+        "control": "Switch",
+        "label": "是否使用花呗分期"
+      }
+    ],
+    "other_info": [
+      {
+        "group_class": "商户照片",
+        "field": "shop_img",
+        "control": "ImageUpload",
+        "label": "经营场所照片"
+      },
+      {
+        "group_class": "商户照片",
+        "field": "shop_main_img",
+        "control": "ImageUpload",
+        "label": "经营场所门牌号照片"
+      },
+      {
+        "group_class": "组织机构代码证",
+        "field": "org_certificate_no",
+        "control": "TextInput",
+        "label": "组织机构代码证号"
+      },
+      {
+        "group_class": "组织机构代码证",
+        "field": "org_certificate_img",
+        "control": "ImageUpload",
+        "label": "组织机构代码证照片"
+      },
+      {
+        "group_class": "开户许可证",
+        "field": "open_license_url",
+        "control": "ImageUpload",
+        "label": "开户许可证"
+      },
+      {
+        "group_class": "微信公众号配置",
+        "field": "wx_official_has",
+        "control": "WechatOpen",
+        "label": "商户自有公众号"
+      }
+    ],
+    "merchant_info": [
+      {
+        "group_class": "商户信息",
+        "field": "merchant_type",
+        "control": "MerchantType",
+        "label": "商户类型",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "商户信息",
+        "field": "pos_merchant_id",
+        "control": "TextInput",
+        "label": "POS商户号"
+      },
+      {
+        "group_class": "商户信息",
+        "field": "out_merchant_id",
+        "control": "TextInput",
+        "label": "外部商户号"
+      },
+      {
+        "group_class": "商户信息",
+        "field": "contact_phone",
+        "control": "TextInput",
+        "label": "客服电话",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "商户信息",
+        "field": "email",
+        "control": "TextInput",
+        "label": "联系邮箱"
+      },
+      {
+        "group_class": "商户信息",
+        "field": "industry_category_id",
+        "data": {
+          "data": {
+            "url": "mchInfo/queryIndustryCategory"
+          }
+        },
+        "control": "Select",
+        "label": "业态类别"
+      },
+      {
+        "group_class": "商户信息",
+        "field": "ali_category_id",
+        "data": {
+          "data": {
+            "fullUrl": "@resources/alipay_category"
+          },
+          "depends": [
+            {
+              "field": "industry_category_id",
+              "value": "{{$industry_category_id.ali_category_id}}"
+            }
+          ],
+          "required": true
+        },
+        "control": "Select",
+        "label": "支付宝经营类目"
+      },
+      {
+        "group_class": "商户信息",
+        "field": "wx_category_id",
+        "data": {
+          "data": {
+            "fullUrl": "@resources/wx_category"
+          },
+          "depends": [
+            {
+              "field": "industry_category_id",
+              "value": "{{$industry_category_id.wx_category_id}}"
+            }
+          ],
+          "required": true
+        },
+        "control": "Cascader",
+        "label": "微信经营类目"
+      },
+      {
+        "group_class": "营业执照",
+        "field": "licence_type",
+        "data": {
+          "data": [
+            {
+              "label": "营业执照",
+              "value": "NATIONAL_LEGAL"
+            },
+            {
+              "label": "营业执照(多证合一)",
+              "value": "NATIONAL_LEGAL_MERGE"
+            },
+            {
+              "label": "事业单位法人证书",
+              "value": "INST_RGST_CTF"
+            }
+          ]
+        },
+        "control": "Select",
+        "label": "营业执照类型"
+      },
+      {
+        "group_class": "营业执照",
+        "field": "licence_code",
+        "control": "TextInput",
+        "label": "营业执照编号"
+      },
+      {
+        "group_class": "营业执照",
+        "field": "licence_url",
+        "control": "ImageUpload",
+        "label": "营业执照扫描件"
+      },
+      {
+        "group_class": "法人信息",
+        "field": "charger",
+        "control": "TextInput",
+        "label": "法人名称",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "法人信息",
+        "field": "charger_phone",
+        "control": "TextInput",
+        "label": "法人手机号",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "法人信息",
+        "field": "id_card",
+        "control": "TextInput",
+        "label": "法人证件号码",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "法人信息",
+        "field": "charger_id_img",
+        "control": "CardUpload",
+        "label": "法人身份证照片",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "法人信息",
+        "field": "charger_hand_img",
+        "control": "ImageUpload",
+        "label": "法人持有身份证照片",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "联系人信息",
+        "field": "linkman_type",
+        "data": {
+          "visible": "$this.merchant_type != 3",
+          "data": [
+            {
+              "label": "法人",
+              "value": "LEGAL_PERSON"
+            },
+            {
+              "label": "实际控制人",
+              "value": "CONTROLLER"
+            },
+            {
+              "label": "代理人",
+              "value": "AGENT"
+            },
+            {
+              "label": "其他",
+              "value": "OTHER"
+            }
+          ]
+        },
+        "control": "Select",
+        "label": "联系人类型"
+      },
+      {
+        "group_class": "联系人信息",
+        "field": "linkman_name",
+        "control": "TextInput",
+        "label": "联系人名称",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "联系人信息",
+        "field": "linkman_id_no",
+        "control": "TextInput",
+        "label": "联系人证件号码",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "联系人信息",
+        "field": "linkman_phone",
+        "control": "TextInput",
+        "label": "联系人手机号",
+        "data": {
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "联系人信息",
+        "field": "linkman_id_img",
+        "control": "CardUpload",
+        "label": "联系人身份证",
+        "data": {
+          "required": "$this.linkman_type != 'LEGAL_PERSON'",
+          "visible": "$this.merchant_type != 3"
+        }
+      },
+      {
+        "group_class": "申请人信息",
+        "field": "linkman_name",
+        "control": "TextInput",
+        "label": "申请人名称",
+        "data": {
+          "visible": "$this.merchant_type == 3"
+        }
+      },
+      {
+        "group_class": "申请人信息",
+        "field": "linkman_id_no",
+        "control": "TextInput",
+        "label": "申请人证件号码",
+        "data": {
+          "visible": "$this.merchant_type == 3"
+        }
+      },
+      {
+        "group_class": "申请人信息",
+        "field": "linkman_phone",
+        "control": "TextInput",
+        "label": "申请人手机号",
+        "data": {
+          "visible": "$this.merchant_type == 3"
+        }
+      },
+      {
+        "group_class": "申请人信息",
+        "field": "linkman_id_img",
+        "control": "CardUpload",
+        "label": "申请人身份证",
+        "data": {
+          "visible": "$this.merchant_type == 3"
+        }
+      },
+      {
+        "group_class": "申请人信息",
+        "field": "linkman_hand_img",
+        "control": "ImageUpload",
+        "label": "申请人手持证件自拍",
+        "data": {
+          "visible": "$this.merchant_type == 3"
+        }
+      },
+      {
+        "group_class": "手续费模式",
+        "field": "linkman_hand_img",
+        "control": "RedioGroup",
+        "label": "手续费模式",
+        "data": {
+          "data": [
+            {
+              "label": "商户承担",
+              "value": "1"
+            },
+            {
+              "label": "用户承担",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      {
+        "group_class": "其他信息",
+        "field": "remark",
+        "control": "TextInput",
+        "label": "备注"
+      },
+      {
+        "group_class": "其他信息",
+        "field": "owner_member_id",
+        "data": {
+          "data": {
+            "url": "mchInfo/queryOwnMember"
+          }
+        },
+        "control": "Select",
+        "label": "客户经理"
+      }
+    ],
+    "channel_info": [
+      {
+        "group_class": "协议扫描件",
+        "field": "agreement_img",
+        "control": "ImageUpload",
+        "label": "协议扫描件"
+      },
+      {
+        "group_class": "营销网点",
+        "field": "bank_branch_id",
+        "control": "MarketBranch",
+        "label": "营销网点"
+      },
+      {
+        "group_class": "手续费",
+        "field": "fee_rate_scheme",
+        "control": "FeeRateTable",
+        "label": "手续费费率",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "结算信息",
+        "field": "bank_account_prop",
+        "control": "AccountProp",
+        "label": "账户类型",
+        "data": {
+          "required": true
+        }
+      },
+      {
+        "group_class": "结算信息",
+        "field": "bank_provice_no",
+        "data": {
+          "data": {
+            "url": "mchInfo/queryProvince"
+          }
+        },
+        "control": "Select",
+        "label": "所在省"
+      },
+      {
+        "group_class": "结算信息",
+        "field": "bank_city_no",
+        "data": {
+          "depends": [
+            {
+              "field": "$modalFormValue.bank_provice_no",
+              "data": {
+                "url": "mchInfo/queryArea",
+                "params": {
+                  "code": "{{$modalFormValue.bank_provice_no}}"
+                }
+              }
+            }
+          ]
+        },
+        "control": "Select",
+        "label": "所在市"
+      },
+      {
+        "group_class": "结算信息",
+        "field": "bank_id",
+        "control": "DepositBank",
+        "label": "开户银行"
+      },
+      {
+        "group_class": "结算信息",
+        "field": "bank_contactNo",
+        "data": {
+          "depends": [
+            {
+              "field": "$modalFormValue.bank_id",
+              "data": {
+                "url": "mchInfo/queryBankBranch",
+                "params": {
+                  "provinceCode": "{{$modalFormValue.bank_provice_no}}",
+                  "cityCode": "{{$modalFormValue.bank_city_no}}",
+                  "bankCode": "{{$modalFormValue.bank_id}}"
+                }
+              }
+            },
+            {
+              "field": "$modalFormValue.bank_city_no",
+              "data": {
+                "url": "mchInfo/queryBankBranch",
+                "params": {
+                  "provinceCode": "{{$modalFormValue.bank_provice_no}}",
+                  "cityCode": "{{$modalFormValue.bank_city_no}}",
+                  "bankCode": "{{$modalFormValue.bank_id}}"
+                }
+              }
+            }
+          ]
+        },
+        "control": "Select",
+        "label": "开户网点"
+      },
+      {
+        "group_class": "结算信息",
+        "field": "bank_account_name",
+        "control": "TextInput",
+        "label": "账户名称"
+      },
+      {
+        "group_class": "结算信息",
+        "field": "bank_account_no",
+        "control": "TextInput",
+        "label": "结算账号"
+      },
+      {
+        "group_class": "结算信息",
+        "field": "settle_bank_card_img",
+        "control": "CardUpload",
+        "label": "银行卡照片"
+      },
+      {
+        "group_class": "结算信息",
+        "field": "id_card_no",
+        "control": "TextInput",
+        "label": "身份证号码",
+        "data": {
+          "required": "$modalFormValue.bank_account_prop == 0",
+          "visible": "$modalFormValue.bank_account_prop == 0"
+        }
+      },
+      {
+        "group_class": "结算信息",
+        "field": "id_card_url",
+        "control": "CardUpload",
+        "label": "身份证照片",
+        "data": {
+          "required": "$modalFormValue.bank_account_prop == 0",
+          "visible": "$modalFormValue.bank_account_prop == 0"
+        }
+      },
+      {
+        "group_class": "结算信息",
+        "field": "settle_auth_img",
+        "control": "ImageUpload",
+        "label": "资金清算授权合影照"
+      }
+    ]
+  }
+}
