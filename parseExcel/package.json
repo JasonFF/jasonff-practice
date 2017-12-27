@@ -4,8 +4,10 @@
   "description": "",
   "main": "parse.js",
   "scripts": {
-    "start": "babel-node --presets latest parse.js",
-    "parseComponents": "babel-node --presets latest parseComponents.js"
+    "start": "npm run parseCmPay",
+    "parseLakala": "babel-node --presets latest ./parse/parseLakala.js",
+    "parseComponents": "babel-node --presets latest ./parse/parseComponents.js",
+    "parseCmPay": "babel-node --presets latest ./parse/parseCmPay.js"
   },
   "author": "",
   "license": "ISC",
